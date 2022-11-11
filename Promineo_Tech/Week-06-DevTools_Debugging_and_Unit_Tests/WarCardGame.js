@@ -122,7 +122,13 @@ function startGame(){
     playerTwoScore = 0;
     tie = 0;
 
+startGame()
+function startGame() {
+    const deck = new Deck()
+    deck.shuffle()
 
+    
+}
 
 
 
