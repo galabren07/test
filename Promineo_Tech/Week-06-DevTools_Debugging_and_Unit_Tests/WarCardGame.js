@@ -3,13 +3,13 @@ console.log("this is my WarCardGame");
 const suits = ["♣", "♣", "♥", "♠"];
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 const ranks = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
-var playerOne = "House";
-var playerTwo = "player";
+var playerOne = [];
+var playerTwo = [];
 
 
 
  class Deck {
-    constructor(cards) {
+    constructor(cards = newDeck()) {
         this.cards = cards
     }
 
@@ -17,14 +17,6 @@ var playerTwo = "player";
         return this.cards.length;
     }
  
-    pop() {
-        return this.card.shift();
-    }
-
-    push() {
-       this.deck.push;
-
-       } 
     }
  
 
@@ -63,10 +55,7 @@ this.rank = rank
         this.ranks = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
         this.deck = [];
    }
-        show() {
-        return `${this.suit} with ${this.value} has ${this.rank}.`
-    
-    }
+
     createDeck() {
         for(let suit of this.suits) {
             for(let value of values) {
@@ -74,9 +63,17 @@ this.rank = rank
             }
         }
     }
+} 
+    function newDeck() {
+        return suits.flatMap(suit => {
+            return values.map(value=> {
+                return new Card(suit, value)
+            })
+        })
+
     }
 
-       
+  
             
 class Player {
 constructor(playerOne, playerTwo, points) {
@@ -95,13 +92,37 @@ constructor(playerOne, playerTwo, points) {
 }
 const dealCards = (arr) => {
     let half = Math.ceil(arr.length / 2);
-    playerOneHand = arr.slice(0, half);
-    playerTwoHand = arr.slice(half);
+    playerOne = arr.slice(0, half);
+    playerTwo = arr.slice(half);
 }
 
 let myNewDeck = new Deck ();
 myNewDeck.createDeck ();
 console.log(myNewDeck);
+
+startGame
+function startGame(){
+    const deck = new Deck()
+    deck.shuffleCards()
+    
+    const split = (deck.numberOfCards / 2)
+    playerOne = Deck(deck.cards.slice(0, split))
+    playerTwo = Deck(deck.cards.slice(split, deck.numberOfCards))
+
+    console.log(playerOne)
+        console.log(playerTwo)
+    }
+    
+    const deck = new Deck();
+    console.log(deck.cards);
+    var playerOneCardValue = playerOne.cards[0].value
+    var PlayerTwoCardValue = playerTwo.cards[0].value
+
+    playerOneScore = 0;
+    playerTwoScore = 0;
+    tie = 0;
+
+
 
 
 
