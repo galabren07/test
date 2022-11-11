@@ -24,7 +24,9 @@ var playerTwo = [];
     push(card) {
         this.cards.push(card)
     }
- 
+ const shuffleIt = () => {
+        this.deck.sort(() => 0.5 - Math.random());
+       }
     }
  
 
@@ -38,13 +40,11 @@ shuffleIt();
         this.cards[i] = oldValue
        }
     
-const shuffleIt = () => {
-        this.deck.sort(() => 0.5 - Math.random());
-       }
+
 
  let newDeck = new Deck();
  console.log("The deck has been shuffled and is ready to deal to play");
- console.log(newDeck.deck);
+// console.log(newDeck.deck);
         
     
         
