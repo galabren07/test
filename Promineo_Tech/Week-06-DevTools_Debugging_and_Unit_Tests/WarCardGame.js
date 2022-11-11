@@ -16,6 +16,14 @@ var playerTwo = [];
     get numberOfCards() {
         return this.cards.length;
     }
+
+    pop() {
+        return this.cards.shift()
+    }
+
+    push(card) {
+        this.cards.push(card)
+    }
  
     }
  
@@ -127,8 +135,39 @@ function startGame() {
     const deck = new Deck()
     deck.shuffle()
 
-    
+    const deckMidpoint = Math.ceil(deck.numberOfCards / 2)
+    playerDeck = new Deck(deck.cards.lastIndexOf(0, deckMidpoint))
+    computerDeck = new Deck(deck.cards.slice(deckMidpoint, deck.numberOfCards))
+    inRound = false
+    stop = false
+
+updateDeckCount()
+
+    if (isRoundWinner(playerOne, PlayerTwo)) {
+        Text.innerText = "Win"
+        playerDeck.push(playerOne)
+        playerDeck.push(playerTwo)
+
+    }else if (isRoundWinner(playerTwo, playerOne))
+    text.innerText = "Lose"
+    computerDeck.push(playerOne)
+    computerDeck.push(playerTwo)
+} if (isRoundWinner(playerTwo, playerOne)){
+    text.innerText = "Lose"
+    computerDeck.push(playerOne)
+    computerDeck.push(playerTwo)
+} else {
+    text.inner.Text = "Draw"
+    playerDeck.push(playerOne)
+    computerDeck.push(playerTwo)
 }
+ if (isGameOver(playerDeck)) {
+    console.log("You Lose!!")
+    stop = true
+ } else if (isGameOver(computerDeck)) {
+    console.log("You Win!!")
+    stop = true
+ }
 
 
 
@@ -138,8 +177,7 @@ function startGame() {
 
 
 
-
-    
+  
 
 
 
