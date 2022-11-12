@@ -24,7 +24,7 @@ var playerTwo = [];
     push(card) {
         this.cards.push(card)
     }
- const shuffleIt = () => {
+  shuffleIt = () => {
         this.deck.sort(() => 0.5 - Math.random());
        }
     }
@@ -32,21 +32,17 @@ var playerTwo = [];
 
 
 //shuffle cards to be random using this for loop
-shuffleIt();
-       for (let i = this.numberOfCards.length - 1; i > 0; i--) {
-        const newIndex = Math.floor(Math.random() * (i +1));
+function shuffleIt() {
+    for (let i = this.numberOfCards.length - 1; i > 0; i--) {
+        const newIndex = Math.floor(Math.random() * (i + 1));
         const oldValue = this.cards[newIndex]
         this.cards[newIndex] = this.cards[i];
         this.cards[i] = oldValue
-       }
-    
+    }
+}
 
 
- let newDeck = new Deck();
- console.log("The deck has been shuffled and is ready to deal to play");
-// console.log(newDeck.deck);
-        
-    
+
         
 
     
@@ -71,16 +67,22 @@ this.rank = rank
             }
         }
     }
+
+
 } 
-    function newDeck() {
+   function newDeck() {
         return suits.flatMap(suit => {
-            return values.map(value=> {
+            return values.map(value => {
                 return new Card(suit, value)
-            })
-        })
+            });
+        });
 
     }
-
+const freshDeck = new Deck();
+ console.log("The deck has been shuffled and is ready to deal to play");
+// console.log(freshDeck.deck);
+        
+    
   
             
 class Player {
@@ -105,7 +107,6 @@ const dealCards = (arr) => {
 }
 
 let myNewDeck = new Deck ();
-myNewDeck.createDeck ();
 console.log(myNewDeck);
 
 startGame
@@ -123,8 +124,8 @@ function startGame(){
     
     const deck = new Deck();
     console.log(deck.cards);
-    var playerOneCardValue = playerOne.cards[0].value
-    var PlayerTwoCardValue = playerTwo.cards[0].value
+    let playerOneCardValue = playerOne.cards
+    let PlayerTwoCardValue = playerTwo.cards
 
     playerOneScore = 0;
     playerTwoScore = 0;
@@ -133,7 +134,6 @@ function startGame(){
 startGame()
 function startGame() {
     const deck = new Deck()
-    deck.shuffle()
 
     const deckMidpoint = Math.ceil(deck.numberOfCards / 2)
     playerDeck = new Deck(deck.cards.lastIndexOf(0, deckMidpoint))
@@ -141,33 +141,36 @@ function startGame() {
     inRound = false
     stop = false
 
-updateDeckCount()
+    function updateDeckCount() {
 
-    if (isRoundWinner(playerOne, PlayerTwo)) {
-        Text.innerText = "Win"
+        if (isRoundWinner(playerOne, PlayerTwo)) {
+            Text.innerText = "Win"
+            playerDeck.push(playerOne)
+            playerDeck.push(playerTwo)
+
+        } else if (isRoundWinner(playerTwo, playerOne))
+            text.innerText = "Lose"
+        computerDeck.push(playerOne)
+        computerDeck.push(playerTwo)
+    }
+    if (isRoundWinner(playerTwo, playerOne)) {
+        text.innerText = "Lose"
+        computerDeck.push(playerOne)
+        computerDeck.push(playerTwo)
+    } else {
+        text.inner.Text = "Draw"
         playerDeck.push(playerOne)
-        playerDeck.push(playerTwo)
-
-    }else if (isRoundWinner(playerTwo, playerOne))
-    text.innerText = "Lose"
-    computerDeck.push(playerOne)
-    computerDeck.push(playerTwo)
-} if (isRoundWinner(playerTwo, playerOne)){
-    text.innerText = "Lose"
-    computerDeck.push(playerOne)
-    computerDeck.push(playerTwo)
-} else {
-    text.inner.Text = "Draw"
-    playerDeck.push(playerOne)
-    computerDeck.push(playerTwo)
+        computerDeck.push(playerTwo)
+    }
+    if (isGameOver(playerDeck)) {
+        console.log("You Lose!!")
+        stop = true
+    } else if (isGameOver(computerDeck)) {
+        console.log("You Win!!")
+        stop = true
+    }
 }
- if (isGameOver(playerDeck)) {
-    console.log("You Lose!!")
-    stop = true
- } else if (isGameOver(computerDeck)) {
-    console.log("You Win!!")
-    stop = true
- }
+
 
 
 
