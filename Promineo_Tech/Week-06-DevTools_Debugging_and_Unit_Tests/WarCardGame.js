@@ -1,4 +1,5 @@
-var Card = (function(){
+console.clear();
+var Card = (function() {
     var suitNames = ['spades', 'diamonds', 'clubs', 'hearts'];
     suitCodes = ['\u2660', '\u2666', '\u2663', '\u2665'],
     
@@ -22,11 +23,12 @@ case 13:
         default:
             return this.value;
         }
+        
 
     },
     get name() {
         var numberName = (function(n){
-            switch(n){
+            switch(n) {
                 case 'A': return 'Ace';
                 case 'K': return 'King';
                 case 'Q': return 'Queen';
@@ -36,8 +38,8 @@ case 13:
 })(this.number);
 return numberName + ' of ' + this.suit;
     },
-    get suitUnicodeArray() {
-        return suitCode; },
+    get suitUnicodeArray() {return suitCode; 
+    },
         get suitNameArray() { return suitNames; }
         },
         returnCard;
