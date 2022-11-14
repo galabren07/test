@@ -1,7 +1,7 @@
 var expect = chai.expect;
 
 describe("WarCardGame", () => {
-        it("should see if the length of the card deck" , function () {
+        it("start Game" , function () {
             let testDeck = new Deck();
             let Deck = testDeck.cardDeck;
             console.log("Test", cards);
